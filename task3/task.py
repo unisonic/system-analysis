@@ -2,9 +2,8 @@ import csv
 import sys
 import math
 
-data = sys.argv[1]
-with open(data, newline='') as csvfile:
-    csv_rows = list(csv.reader(csvfile, delimiter=','))
+
+def task(csv_rows):
     n = len(csv_rows)
     
     ans = 0.0
@@ -16,6 +15,9 @@ with open(data, newline='') as csvfile:
             fraction = int(relation) / (n - 1)
             ans -= fraction * math.log2(fraction)
     
-    print(round(ans, 1))
+    return round(ans, 1)
 
 
+if __name__ == "__main__":
+    with open(sys.argv[1], newline='') as csvfile:
+        print(task(list(csv.reader(csvfile, delimiter=','))))
